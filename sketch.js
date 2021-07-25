@@ -3,7 +3,7 @@ var doorImg, door, doorsGroup;
 var climberImg, climber, climbersGroup;
 var ghost, ghostImg;
 var invisibleBlockGroup, invisibleBlock;
-var gameState = "play"
+var gameState = "start"
 
 function preload(){
   towerImg = loadImage("tower.png");
@@ -31,6 +31,15 @@ function setup(){
 
 function draw(){
   background(0);
+  if(gameState === "start"){
+    fill("white");
+    textSize(15);
+    text("press SPACE key to start",150,100);
+    text("press < ^ > keys to move the ghost reaper",150,200);
+    if(keyDown("SPACE")){
+      gameState ==="play";
+    }
+  }
   if (gameState === "play") {
     if(keyDown("left_arrow")&&ghost.x>100){
       ghost.x = ghost.x - 10;

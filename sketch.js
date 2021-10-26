@@ -30,7 +30,7 @@ function setup(){
 }
 
 function draw(){
-  background("purple");
+  background("pink");
   if(gameState === "start"){
     fill("white");
     textSize(15);

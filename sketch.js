@@ -30,17 +30,18 @@ function setup(){
 }
 
 function draw(){
-  background(0);
+  background("black");
   if(gameState === "start"){
     fill("white");
     textSize(15);
     text("press SPACE key to start",150,100);
-    text("press < ^ > keys to move the ghost reaper",150,200);
+    text("press < ^ > keys to move the Ghost Reaper",100,200);
     if(keyDown("SPACE")){
-      gameState ==="play";
+      gameState ="play";
+      
     }
-  }
-  if (gameState === "play") {
+  } 
+  if (gameState == "play") {
     if(keyDown("left_arrow")&&ghost.x>100){
       ghost.x = ghost.x - 10;
     }
@@ -69,8 +70,8 @@ function draw(){
       ghost.destroy();
       gameState = "end"
     }
-    
     drawSprites();
+    
   }
   
   if (gameState === "end"){
@@ -79,18 +80,18 @@ function draw(){
     textSize(30);
     text("Game Over", 230,250)
   }
-
+  
 }
 
 function spawnDoors() {
   //write code here to spawn the doors in the tower
-  if (frameCount % 240 === 0) {
+  if (frameCount % 200 === 0) {
     var door = createSprite(200, -50);
     var climber = createSprite(200,10);
     var invisibleBlock = createSprite(200,15);
     invisibleBlock.width = climber.width;
     invisibleBlock.height = 2;
-    
+    invisibleBlock.visible = false;
     door.x = Math.round(random(120,400));
     climber.x = door.x;
     invisibleBlock.x = door.x;
@@ -113,7 +114,7 @@ function spawnDoors() {
     
     //add each door to the group
     doorsGroup.add(door);
-    invisibleBlock.debug = true;
+    //invisibleBlock.debug = true;
     climbersGroup.add(climber);
     invisibleBlockGroup.add(invisibleBlock);
   }
